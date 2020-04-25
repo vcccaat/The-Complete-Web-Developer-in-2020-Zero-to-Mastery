@@ -9,7 +9,7 @@ shift + cmd + p  open control panel
 ```html
 <!-- the first one is better -->
 <strong> <!-- important text --> = <b> 
-<em> = <i>
+<em> <!-- emphasized text --> = <i>
 
 <br> break
 <hr> horizontal line
@@ -40,7 +40,23 @@ after submit this form, form automatically use an attribute `method="GET"` to se
 we might use `method="POST"` which hide your information in the web link <br>
 
 `<div>` allows divide up content to sections, each section can have its own style in css <br>
-`<span>` similar, but inline for specific element 
+`<span>` similar, but inline for specific element <br>
+
+`<a href="url" target="_blank">` open a link in a new tab/browser window <br>
+
+table elements
+```html
+<table>
+  <tr>
+    <th>Month</th>
+    <th>Savings</th>
+  </tr>
+  <tr>
+    <td>January</td>
+    <td>$100</td>
+    <td>$120</td>
+  </tr>
+ ```
 
 
 ### HTML5
