@@ -1,8 +1,15 @@
-# Class 8
+**Table of Content** <br> 
+- [Bootstrap4](#bootstrap4)
+- [Layout](#layout)
+  * [Container](#container)
+- [Recommended Resources](#recommended-resources)
+  * [Save email address](#save-email-address)
+  * [Animate css](#animate-css)
+  * [Bootstrap theme](#bootstrap-theme)
 
-[*Website building great resources*](https://zerotomastery.io/resources/)
 
-## Bootstrap
+
+## Bootstrap4
 Bootstrap can use someone's css and build on top of it. <br>
 
 CDN: content delivery network, don't need to include the file in the project, but link to the place host the file. <br>
@@ -51,7 +58,7 @@ if the size of the window is medium, these 3 elements will take up the whole two
 </div>	
 ```
 
-### container
+### Container
 ```html
 <div class="container d-flex align-items-center h-100"> <!-- put the elements in a container, activate flex -->
 <!-- make the container have 100% height of the page, so that it can align it to the center -->
@@ -68,6 +75,8 @@ if the size of the window is medium, these 3 elements will take up the whole two
 
 ```
 
+## Recommended Resources
+
 ### Save email address
 *MailChimp* is free to allow user subscribe to website <br>
 
@@ -79,12 +88,12 @@ click a button can navigate to a link:
 </a>
 ```
 
-### animate css
+### Animate css
 download [animated css](https://daneden.github.io/animate.css/)
 
-### bootstrap theme
-[Creative Tim](https://www.creative-tim.com/)
-[HTML5/CSS3 template 1](http://www.mashup-template.com/templates.html)
-[HTML5/CSS3 template 2](https://cruip.com/)
-[HTML5/CSS3 template 3](https://mdbootstrap.com/freebies/)
+### Bootstrap theme
+[Creative Tim](https://www.creative-tim.com/) <br>
+[HTML5/CSS3 template 1](http://www.mashup-template.com/templates.html)<br>
+[HTML5/CSS3 template 2](https://cruip.com/)<br>
+[HTML5/CSS3 template 3](https://mdbootstrap.com/freebies/)<br>
 [HTML5/CSS3 template 4](https://startbootstrap.com/templates/)

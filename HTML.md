@@ -1,13 +1,13 @@
-## Class 4-5
+## Recommended Resources
 quiz HTML: https://www.w3schools.com/quiztest/quiztest.asp?qtest=HTML <br>
 exercise HTML: https://www.w3schools.com/html/exercise.asp
 
-### Sublime trick
+## Sublime trick
 type html and tab, load all the required content for you <br>
 shift + cmd + p  open control panel 
 
 
-### HTML syntax
+## HTML syntax
 ```html
 <!-- the first one is better -->
 <strong> <!-- important text --> = <b> 
@@ -61,7 +61,7 @@ table elements
  ```
 
 
-### HTML5
+**HTML5**
 latest evolution, not affect old version website <br>
 add new semantic element for crawler understand information `<header>`, `<nav>`,`<footer>`
 

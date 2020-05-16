@@ -1,14 +1,45 @@
-# Class 6-7 and 9
+
+**Table of Content** <br> 
+- [General](#general)
+  * [Recommended Resources](#recommended-resources)
+  * [CSS3 intro](#css3-intro)
+    + [Critical Render Path](#critical-render-path)
+  * [Elements](#elements)
+    + [Selector](#selector)
+    + [Class](#class)
+    + [Id](#id)
+    + [* all](#*-all)
+  * [Rules](#rules)
+    + [Order](#order)
+  * [Font](#font)
+  * [Image](#image)
+  * [Box model](#box-model)
+  * [Size px em rem](#size-px-em-rem)
+- [Layout](#layout)
+  * [Flexbox](#flexbox)
+  * [CSS grid](#css-grid)
+  * [Position](#position)
+  * [Common examples](#common-examples)
+    + [Image gallary](#image-gallary)
+    + [Media query](#media-query)
+    + [Sticky bar](#sticky-bar)
+
+# General 
+## Recommended Resources
+[Website building great resources](https://zerotomastery.io/resources/)
 [quiz css](https://www.w3schools.com/quiztest/quiztest.asp) <br>
 [practice css](https://flukeout.github.io/css)<br>
 [lookup css tricks](https://css-tricks.com/almanac/)
+[check browser compatability](caniuse.com)
 
-
-## CSS intro
+## CSS3 intro
 cascading style sheet: take the last input as the selected property <br>
 
 
 * `<head>` in HTML contains information need in the page, put `<link>` here can link to a css file
+```html
+<link rel="stylesheet" type="text/css" href="./style.css">
+```
 
 * or you can use inline css: `style="XX"`
 
@@ -19,7 +50,9 @@ A path the website take to display a page. <br>
 To make the page load faster, we can [minify css](https://www.cleancss.com/css-minify/), reduce the file into one line so it become smaller
 
 
-## Element\selector and property
+## Elements
+
+### Selector
 ```CSS
 body {
 	background-image: url(backgroundimage.jpg);
@@ -55,7 +88,7 @@ if we want one selector has different property, we can add `Class="xxtext active
 }
 ```
 
-### id
+### Id
 similar to class, but can only use same id once <br>
 inside html:
 ```css
@@ -71,7 +104,8 @@ inside html:
 }
 ```
 
-### * (all the things)
+### * all
+means all the elements
 ```css
 * {
 	text-align: right;
@@ -121,6 +155,8 @@ css:
 img {
 	float: left 
 	/*text can float to left embed the image*/
+	width: 100%
+	/*make img to fit the entire grid, if the grid has padding, the size of img will become smaller */
 }
 ```
 when you use float, almost every cases, you need to put this in the property after the float is used: `clear: both;`
@@ -171,6 +207,7 @@ span {
 [Practice flexbox](http://flexboxfroggy.com/) <br>
 [Cheat sheet flexbox](https://darekkay.com/dev/flexbox-cheatsheet.html)
 
+use flex when you don't need to make many grids
 ```css
 .container {
 	display: flex; /*inline-flex similar to inline-block */
@@ -178,6 +215,8 @@ span {
 	justify-content: center; /*flex-start | flex-end |space-between | space-around | space-evenly */
 	align-items: flex-end; /*flex-start | stretch | baseline*/
  	align-content: flex-start | flex-end | center | space-between | space-around  /*for more than one row of items */
+ 	height: 50vh;
+ 	/* vh make element responsive: fill out 50% of the window */
 
 }
 
@@ -204,7 +243,6 @@ responsive css:
 	display: grid;  /*similar to flexbox*/ 
 	grid-gap: 20px;  /*gap between grid */
 	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /*complete responsive with auto-fill */
-	A /*for all rows  */
 }
 ```
 
@@ -237,7 +275,7 @@ change on individual grid:
 }
 ```
 
-### Put one item to the left\right of the row
+*Put one item to the left\right of the row* <br>
 `margin-right: auto;` can put the item to the left by taking up all the right side margin by auto amount
 
 ## Position
@@ -248,13 +286,13 @@ If set parent's `position: relative;` its child element, now the properties such
 * Fixed:
 Is similar to absolute, but unaffected by scrolling, the element continue to be in the same place
 
-[*What is the difference between inline-flex and inline-block in CSS?*](https://www.geeksforgeeks.org/what-is-the-difference-between-inline-flex-and-inline-block-in-css/)
+[*What is the difference between inline-flex and inline-block in CSS?*](https://www.geeksforgeeks.org/what-is-the-difference-between-inline-flex-and-inline-block-in-css/) <br>
 flex compare to block can put the element on the same row. inline means the element will not fill the whole row.
 
 
+## Common examples
 
-
-### image gallary
+### Image gallary
 
 ```css
 img {
@@ -264,8 +302,20 @@ img {
 
 img: hover {
 	transform: scale(1.1)
-	animation: 
+	animation:  /*you can add more animation*/
 }
 ```
+### Media query
+allow content fit in different media window size
+[Media query](https://css-tricks.com/snippets/css/media-queries-for-standard-devices/)
 
+### Sticky bar
+make the navivation bar sticky
+```css
+.sticky {
+	position: fixed;
+	top: 0;
+	width: 100%;
+}
+```
 
