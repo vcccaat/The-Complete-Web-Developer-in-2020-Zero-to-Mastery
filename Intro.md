@@ -1,5 +1,15 @@
-## Class 1-3
+## Command line
+`open .` open the current directory you are in <br>
+`mkdir` create a directory with name behind it <br>
+`touch index.html` create a file  <br>
+`open -a "sublime text"` -a means application <br>
+`open -a "sublime text" index.html` open a file in that application <br>
+`mv index.html about.html` change name of the file <br>
+`rm about.html` remove a file<br>
+`rm -r foldername` remove a folder when you are in the directory above it<br>
 
+
+## Internet
 ### What happens when you click a website?
 Click google ⮕ <br /> 
 ISP (internet service provider)  ⮕ <br /> 

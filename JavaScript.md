@@ -60,6 +60,7 @@ inside `<body>  </body>` at the bottom
 * Number 
 * String
 ```javascript
+
 10 + "34"
 // "1034"
 10 - "3"
@@ -782,5 +783,37 @@ use `innerHTML` to change DOM (e.g. add a new element in `<a>`)will cause rerend
 jQuery: javavscript library that is imperative, which means we need to tell the website exactly what to do if this happend.
 React: declarative
 
+## NPM Node.js
+Node.js allows computer to run js outside of the browser(it has a javascript engine V8) <br>
+`npm init` create package.json file in your repo<br>
+`npm install lodash` only install in a project <br>
+`npm install -g browserify` will install globally, which can use in terminal <br>
+now browserify become a dependency in `package.json`, our project depend on it
+```javascript
+// browserify syntax
+var _ = require('lodash')
+const array = [1,2,3]
+console.log('answer',_.without(array,3)) //without is a function in lodash
+
+// use broswerify to combine js files in terminal
+browserify script.js > bundle.js 
+```
+NVM(Node Version Manager): can install multiple versions of node and change between them <br>
 
 
+**package.json**<br>
+ dependencies: a new person can install all dependencies when start the  project by `npm install`<br>
+ script: run commands in a script by `npm run build`
+```javascript
+"script":{
+	"build":"browserify script.js > bundle.js && live-server"
+}
+```
+<br>
+
+## Version 
+**senmantic versioning**: aa.bb.cc <br>
+cc:patch release, a bug fix <br>
+bb:minor release, add a new feature  <br>
+aa:major release, quite different from previous version <br>
+Check the version of packages you need to update to: https://semver.npmjs.com/
