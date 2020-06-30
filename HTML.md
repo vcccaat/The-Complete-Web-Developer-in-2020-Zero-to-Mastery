@@ -2,10 +2,6 @@
 quiz HTML: https://www.w3schools.com/quiztest/quiztest.asp?qtest=HTML <br>
 exercise HTML: https://www.w3schools.com/html/exercise.asp
 
-## Sublime trick
-type html and tab, load all the required content for you <br>
-shift + cmd + p  open control panel 
-
 
 ## HTML syntax
 ```html

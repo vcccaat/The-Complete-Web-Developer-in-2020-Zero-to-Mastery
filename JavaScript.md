@@ -25,22 +25,35 @@
   * [Instantiation](#instantiation)
 - [Pass by value / pass by reference](#pass-by-value---pass-by-reference)
 - [Type coercion](#type-coercion)
+- [Count time pass](#count-time-pass)
 - [ES7](#es7)
 - [ES8](#es8)
+- [ES9](#es9)
 - [ES10](#es10)
 - [Async](#async)
+  * [Promise](#promise)
 - [Module](#module)
 - [JavaScript HTML DOM](#javascript-html-dom)
   * [DOM Selectors](#dom-selectors)
   * [Changing Styles](#changing-styles)
   * [Event](#event)
-
+    + [add new element](#add-new-element)
+    + [get user input](#get-user-input)
+    + [keyboard event](#keyboard-event)
+    + [nested event](#nested-event)
+    + [input event](#input-event)
+  * [DOM manipulation drawback](#dom-manipulation-drawback)
+- [jQuery](#jquery)
+- [NPM](#npm)
+- [AJAX](#ajax)
+- [Version](#version)
 
 
 
 ## JavaScript learning sources
 [DOM events](https://developer.mozilla.org/en-US/docs/Web/Events)<br>
-[javascript-the-core](http://dmitrysoshnikov.com/ecmascript/javascript-the-core-2nd-edition/) <br>
+[ES features](https://github.com/daumann/ECMAScript-new-features-list)<br>
+[javascript-the-core Book](http://dmitrysoshnikov.com/ecmascript/javascript-the-core-2nd-edition/) <br>
 [Modern JavaScript Tutorial](https://javascript.info/) <br>
 [You-Dont-Know-JS Book](https://github.com/getify/You-Dont-Know-JS)
 
@@ -337,7 +350,10 @@ const reduceArray = array.reduce((accumulator, num) => {
 },0) // default value of accumulator
 // without 0, it will concat number instead of adding up 
 //return 0+1+2+3
+
+array.some(()=> return XXcondition)  //loop through array and find sth match, will stop
 ```
+
 
 
 ## Object
@@ -494,6 +510,11 @@ NaN === NaN //false
 // should be true, use:
 Object.is(NaN,NaN)  //true
 ```
+## Count time pass
+```javascript
+console.time('It takes:')
+console.timeEnd('It takes:')
+```
 
 ## ES7
 2016 <br>
@@ -548,6 +569,23 @@ Object.entries(obj).forEach(value => {
 // ['name1','bb']
 ```
 
+**object spread operator**
+```javascript
+const animal = { tiger: 2, lion:3, monkey:4}
+const {tiger, ...rest} = animals // rest include object with lion and monkey
+
+const array = [1,2,3]
+function sum (a,b,c){return a+b+c}
+sum(...array) //6
+```
+
+## ES9
+**.finally()** run a code no matter what happend after promise, regardless `.then()` or `.catch()` <br>
+
+**for await of**  
+iterate await, similar to `for of`
+
+
 ## ES10
 2019 latest<br>
 
@@ -588,9 +626,8 @@ const obj = Object.fromEntries(users)
 Object.entries(obj)
 ```
 
-**try catch** 
-
-## Async
+## Async 
+**execution order** <br>
 increase variables in the memory heap but forgot to clean it result in memory leak.<br>
 
 things put to call stack will be removed in order after the function finished, call stack become empty
@@ -612,11 +649,11 @@ javascript is single threaded language, means one call stack,can only do one thi
 
 **synchronous programming** means line two get executed only after line one finished. if a task takes a long time, then tasks after get freeze. <br>
 
-**asynchronous programming** 
+**Asynchronous** 
 ```javascript
 //not from javascript but the web API
 console.log('0')
-setTimeout(() => {console.log('1')},0)
+setTimeout(() => {console.log('1')},1000) //1s
 console.log('2')
 // 0 2 1  because callback() after call stack is empty
 
@@ -632,6 +669,68 @@ callback()
 callback()  console.log()
 //call stack
 ```
+
+### Promise 
+a promise is an object that may produce a single value some time in the future (async), either a `resolved` value or a `reject`: reason that it's not resolved <br>
+`.then()` produce synchronous result <br>
+`.catch(()-> XXX)` can catch failure, good for fetch api 
+```javascript
+const promise = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve("success");
+  }, 4000)
+});
+// or
+const promise = Promise.resolve(
+  setTimeout(() => {
+    console.log("success");
+  }, 4000)
+);
+Promise.reject('failed')
+  .catch(console.log('Ooops something went wrong'))
+
+// run the promise
+promise.then(resp => console.log(resp))
+
+// fetch multiple sources at one time
+Promise.all(urls.map(url =>
+    fetch(url).then(people => people.json())
+)).then(array => {
+  	array[0]
+  	throw Error;
+  }).catch(err => console.log('fix it!', err));
+
+//  for await of 
+const array = urls.map(url => fetch(url))
+for await (let request of array) {
+	const data = await request.json();
+	console.log(data)
+}
+```
+
+**async function**
+```javascript
+// only syntax different with .then()
+async function playerstart(){
+	// can have variable, .then() can't have
+	const first = await moveplayer(100,'left') //pause 
+	await moveplayer(400,'right') //pause
+}
+
+// anonymous function
+const getdata = async function(){
+try{
+	// asyn can define custom variable names 
+	 const [users, posts, albums] = await Promise.all(
+    urls.map((url) => fetch(url).then((resp) => resp.json())),
+  );
+}
+catch(err){
+	console.log(err)
+}
+} 
+```
+
 
 ## Module 
 ES6+Webpack2 <br>
@@ -783,12 +882,15 @@ use `innerHTML` to change DOM (e.g. add a new element in `<a>`)will cause rerend
 jQuery: javavscript library that is imperative, which means we need to tell the website exactly what to do if this happend.
 React: declarative
 
-## NPM Node.js
-Node.js allows computer to run js outside of the browser(it has a javascript engine V8) <br>
-`npm init` create package.json file in your repo<br>
-`npm install lodash` only install in a project <br>
-`npm install -g browserify` will install globally, which can use in terminal <br>
-now browserify become a dependency in `package.json`, our project depend on it
+## NPM
+- `npm init` create package.json file in your repo
+- `npm install lodash` only install in a project 
+- `npm install -g browserify` will install globally, which can use in terminal 
+- `npm run built` create a optimized js file that can put on the internet 
+- `--save-dev` means the dependencies only use in development by you 
+- run command in `scripts:{}` will look for file in `.bin`
+
+
 ```javascript
 // browserify syntax
 var _ = require('lodash')
@@ -810,6 +912,17 @@ NVM(Node Version Manager): can install multiple versions of node and change betw
 }
 ```
 <br>
+
+## AJAX
+only re-render the part when it has update
+```javascript
+fetch('/my/url').then(response => {
+	console.log(response)
+})
+```
+single page application: load a empty page and build content on the fly
+
+
 
 ## Version 
 **senmantic versioning**: aa.bb.cc <br>

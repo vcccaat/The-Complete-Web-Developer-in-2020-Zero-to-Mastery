@@ -152,7 +152,7 @@ css:
 img {
 	float: left 
 	/*text can float to left embed the image*/
-	width: 100%
+	 
 	/*make img to fit the entire grid, if the grid has padding, the size of img will become smaller */
 }
 ```
@@ -198,6 +198,35 @@ span {
 
 
 # Layout
+## Centering
+[tutorial](https://www.w3cschool.cn/css/css-center.html)
+```css
+<div class="container">
+	<div class="box"> // 
+		anything
+	</div>
+</div>
+
+.container{
+	text-align: center
+}
+.box{
+	display: inline-block //default is block which span the whole row
+}
+```
+**horizontal center** <br>
+* `margin:0 auto;` but can't vertical center
+* `text-align:center;`
+
+**vertical center** <br>
+```css
+.warp{
+	line-height:200px;
+	height:200px;
+}
+```
+can put `div` inside `h1`: `<h1><div class='warp'>Loading</div></h1> `
+
 
 ## Flexbox 
 [Complete guide](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)<br>
@@ -281,7 +310,8 @@ If a child element has an absolute value then the parent element will behave as 
 * Relative: 
 If set parent's `position: relative;` its child element, now the properties such as left, right, bottom and top will refer to the parent element (inside parent)
 * Fixed:
-Is similar to absolute, but unaffected by scrolling, the element continue to be in the same place
+Is similar to absolute, but unaffected by scrolling, the element continue to be in the same place <br>
+**Z-index: -1** can use when positon:fixed or absolute, allow that element below other elements
 
 [*What is the difference between inline-flex and inline-block in CSS?*](https://www.geeksforgeeks.org/what-is-the-difference-between-inline-flex-and-inline-block-in-css/) <br>
 flex compare to block can put the element on the same row. inline means the element will not fill the whole row.
@@ -303,7 +333,7 @@ img: hover {
 }
 ```
 ### Media query
-allow content fit in different media window size
+responsive website: allow content fit in different media (mobile, ipad...) window size
 [Media query](https://css-tricks.com/snippets/css/media-queries-for-standard-devices/)
 
 ### Sticky bar
@@ -315,4 +345,12 @@ make the navivation bar sticky
 	width: 100%;
 }
 ```
-
+### Text with gradient color
+```css
+h1 {
+	background: linear-graident(XXX);
+	-webkit-background-clip: text; 
+	-webkit-text-fill-color: transparent; //shows color behind the text
+	display: inline //the text cover all span of the color change
+}
+```
